@@ -2,6 +2,7 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import fontLoader from '@utils/basic/fontLoader'
 import { BASE_PATH } from '@constants/envs'
+import { getRouter } from '@helpers/RouterNexus'
 
 const fontFile = `${BASE_PATH}/inter.css`
 const fontFamily = `Inter`
@@ -9,7 +10,7 @@ const fontFamily = `Inter`
 export default class MyDocument extends Document {
 	render() {
 		return (
-			<Html>
+			<Html dir={getRouter()?.locale === 'ar' ? 'rtl' : 'ltr'}>
 				<Head>
 					<script
 						dangerouslySetInnerHTML={{

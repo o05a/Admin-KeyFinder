@@ -115,7 +115,7 @@ const Login: NextPage = () => {
 			<Meta />
 			{fields}
 			<Button type="submit" variant="contained" loading={loading}>
-				Login
+				{labels.submit}
 			</Button>
 		</Box>
 	)

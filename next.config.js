@@ -6,7 +6,7 @@ const { withPlugins, optional } = require('next-compose-plugins')
 const nextConfig = {
 	reactStrictMode: true,
 	i18n: {
-		locales: ['en'],
+		locales: ['en', 'ar'],
 		defaultLocale: 'en',
 	},
 	future: {
