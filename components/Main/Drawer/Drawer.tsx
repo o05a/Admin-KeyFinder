@@ -134,7 +134,6 @@ const Drawer: FC<Partial<HTMLAttributes<HTMLDivElement>>> = props => {
 	}
 
 	const DrawerContent: DrawerContentItem[] = [
-		{ component: Title, children: 'Admin' },
 		{
 			...baseProps({ url: pages.dashboard.url, condition: 'equal' }),
 			title: labels.overview,
@@ -160,18 +159,6 @@ const Drawer: FC<Partial<HTMLAttributes<HTMLDivElement>>> = props => {
 		</DrawerBase>
 	)
 }
-
-const Title = styled.div`
-	font-weight: 600;
-	font-size: 12px;
-	line-height: 15px;
-	display: flex;
-	align-items: center;
-	letter-spacing: 1px;
-	color: ${({ theme }) => theme.colors.gray600};
-	padding: 2px 14px;
-	margin-bottom: 7px;
-`
 
 const Container = styled.div`
 	padding: 16px;

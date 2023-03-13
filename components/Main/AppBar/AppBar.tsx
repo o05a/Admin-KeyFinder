@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import { Button } from '@admixltd/admix-component-library'
 import { ReactComponent as LogoIcon } from '@svg/AppBar/logo.svg'
 import { ReactComponent as DrawerToggleIcon } from '@svg/AppBar/drawerToggle.svg'
-import classnames from 'classnames'
 import { useRecoilState } from 'recoil'
 import DrawerAtom from '@atoms/Drawer'
 import { useRouter } from 'next/router'
@@ -13,6 +12,7 @@ import { FC } from 'react'
 const AppBar: FC = ({ ...props }) => {
 	const router = useRouter()
 	const [drawerOpened, setDrawerOpened] = useRecoilState(DrawerAtom)
+	const locale = router.locale ?? 'en'
 	return (
 		<AppBarContainer {...props}>
 			<LogoContainer>
@@ -28,9 +28,7 @@ const AppBar: FC = ({ ...props }) => {
 					onClick={() => {
 						setDrawerOpened(!drawerOpened)
 					}}
-					className={classnames({
-						drawerOpened,
-					})}
+					className={drawerOpened ? `${locale}-drawerOpened` : `${locale}-drawerClosed`}
 				/>
 			</LogoContainer>
 			<MainSection>
@@ -57,6 +55,24 @@ const DrawerToggle = styled(Button)`
 			transition-delay: calc(var(--i) * 0.05s);
 		}
 
+		&.ar-drawerOpened {
+			.drawerToggle_svg__ {
+				&top,
+				&bottom {
+					transform: translateX(-6px);
+				}
+
+				&middle {
+					transform: translateX(-9px);
+				}
+
+				&arrow {
+					transform-origin: 18px;
+					transform: translateX(12px) scaleX(-1);
+				}
+			}
+		}
+
 		.drawerToggle_svg__ {
 			&top,
 			&bottom {
@@ -73,7 +89,8 @@ const DrawerToggle = styled(Button)`
 			}
 		}
 
-		&.drawerOpened {
+		&.en-drawerOpened,
+		&.ar-drawerClosed {
 			.drawerToggle_svg__ {
 				&top,
 				&bottom {

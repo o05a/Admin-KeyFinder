@@ -8,7 +8,8 @@
     "svgo": "npx svgo --final-newline -q -r -f images/svg/"
   },
   "dependencies": {
-    "@admixltd/admix-component-library": "latest",
+    "@admixltd/admix-component-library": "^0.5.17",
+    "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
     "@mui/material": "latest",
@@ -36,7 +37,10 @@
     "react-number-format": "<5",
     "react-transition-group": "latest",
     "react-window": "latest",
-    "recoil": "latest"
+    "recoil": "latest",
+    "stylis-plugin-rtl": "latest",
+    "stylis": "latest",
+    "@types/stylis": "latest"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "latest",

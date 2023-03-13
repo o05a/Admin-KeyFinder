@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { CheckBox as ACLCheckBox, flexGap } from '@admixltd/admix-component-library'
+import { CheckBox as ACLCheckBox } from '@admixltd/admix-component-library'
 import { IField } from '@forms/generate/types/IField'
 import { ICheckBox } from '@forms/components/CheckBox/ICheckBox'
 import styled from '@emotion/styled'
@@ -38,12 +38,11 @@ const LabelContainer = styled.div<{
 	$color?: keyof ITheme['colors']
 }>`
 	color: ${({ theme, $color = 'text' }) => theme.colors[$color]};
-	display: inline-flex;
 `
 const CheckBoxContent = styled.div`
 	align-items: center;
 	display: flex;
-	${({ theme }) => flexGap(theme.checkBox.labelGap)}
+	gap: 10px;
 `
 
 const CheckBoxContainer = styled.div`

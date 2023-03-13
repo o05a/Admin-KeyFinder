@@ -12,4 +12,5 @@ export default {
 			label: 'Remember me',
 		},
 	},
+	submit: 'Login',
 }

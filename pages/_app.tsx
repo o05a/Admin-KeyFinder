@@ -2,7 +2,7 @@ import { CssBaseline } from '@mui/material'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import { Global } from '@emotion/react'
+import { CacheProvider, Global } from '@emotion/react'
 import { SnackbarProvider } from 'notistack'
 import theme from 'styles/theme'
 import GlobalStyles from 'styles/global'
@@ -20,11 +20,16 @@ import ignoreRecoilErrors from '@utils/basic/ignoreRecoilErrors'
 import { LazyMotion } from 'framer-motion'
 import { BASE_PATH } from '@constants/envs'
 import { AppPropsWithLayout } from '@interfaces/NextPage'
+import rtlPlugin from 'stylis-plugin-rtl'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { prefixer } from 'stylis'
+import createCache from '@emotion/cache'
 import BreadCrumbAtom from '@atoms/BreadCrumb'
 import { useEffect } from 'react'
 import DrawerAtom from '@atoms/Drawer'
 import { ServerSideBaseProps } from '@helpers/withServerSideBaseProps'
 import ModalProvider from 'mui-modal-provider'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import HooksNexus from '@helpers/HooksNexus'
 
 /**
@@ -68,6 +73,11 @@ export default function MyApp({
 	const getLayout = Component.getLayout ?? (page => page)
 	const { recoilSetter, breadCrumb } = Component
 
+	const cacheRtl = createCache({
+		key: 'muirtl',
+		stylisPlugins: currentLocale === 'ar' ? [prefixer, rtlPlugin] : [prefixer],
+	})
+
 	/**
 	 * Update recoil on client-side
 	 */
@@ -86,55 +96,59 @@ export default function MyApp({
 	}, [breadCrumb, router, pageProps])
 
 	return (
-		<AdmixThemeProvider theme={theme}>
-			<RouterNexus />
-			<CssBaseline />
-			<Global styles={GlobalStyles({ theme })} />
-			<AuthProvider
-				{...{
-					refetchInterval,
-					session,
-					basePath,
-				}}
-				refetchOnWindowFocus
-			>
-				<SessionController />
-				<RecoilRoot
-					initializeState={mutableSnapshot => {
-						const { set } = mutableSnapshot
-						set(LabelsAtom, labels[currentLocale])
-						set(DrawerAtom, !!drawerOpened)
-						if (breadCrumb) set(BreadCrumbAtom, breadCrumb(pageProps))
-						if (recoilSetter) recoilSetter(mutableSnapshot, pageProps, router)
+		<CacheProvider value={cacheRtl}>
+			<AdmixThemeProvider theme={theme}>
+				<RouterNexus />
+				<CssBaseline />
+				<Global styles={GlobalStyles({ theme })} />
+				<AuthProvider
+					{...{
+						refetchInterval,
+						session,
+						basePath,
 					}}
+					refetchOnWindowFocus
 				>
-					<ModalProvider>
-						<RecoilNexus />
-						{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment       */}
-						{/* @ts-ignore https://github.com/iamhosseindhv/notistack/issues/485 */}
-						<SnackbarProvider
-							maxSnack={10}
-							hideIconVariant
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'right',
-							}}
-						>
-							<Meta />
-							<SnackbarUtilsConfigurator />
-							<LazyMotion
-								features={() =>
-									import('@utils/motion/domAnimation').then(res => res.default)
-								}
-								strict
+					<SessionController />
+					<RecoilRoot
+						initializeState={mutableSnapshot => {
+							const { set } = mutableSnapshot
+							set(LabelsAtom, labels[currentLocale])
+							set(DrawerAtom, !!drawerOpened)
+							if (breadCrumb) set(BreadCrumbAtom, breadCrumb(pageProps))
+							if (recoilSetter) recoilSetter(mutableSnapshot, pageProps, router)
+						}}
+					>
+						<ModalProvider>
+							<RecoilNexus />
+							{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment       */}
+							{/* @ts-ignore https://github.com/iamhosseindhv/notistack/issues/485 */}
+							<SnackbarProvider
+								maxSnack={10}
+								hideIconVariant
+								anchorOrigin={{
+									vertical: 'bottom',
+									horizontal: 'right',
+								}}
 							>
-								{getLayout(<Component {...pageProps} key={router.route} />)}
-							</LazyMotion>
-							<HooksNexus />
-						</SnackbarProvider>
-					</ModalProvider>
-				</RecoilRoot>
-			</AuthProvider>
-		</AdmixThemeProvider>
+								<Meta />
+								<SnackbarUtilsConfigurator />
+								<LazyMotion
+									features={() =>
+										import('@utils/motion/domAnimation').then(
+											res => res.default
+										)
+									}
+									strict
+								>
+									{getLayout(<Component {...pageProps} key={router.route} />)}
+								</LazyMotion>
+								<HooksNexus />
+							</SnackbarProvider>
+						</ModalProvider>
+					</RecoilRoot>
+				</AuthProvider>
+			</AdmixThemeProvider>
+		</CacheProvider>
 	)
 }
