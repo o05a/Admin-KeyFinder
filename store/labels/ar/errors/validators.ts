@@ -2,21 +2,21 @@ import { Validators } from '@forms'
 import pluralize from 'pluralize'
 
 export default {
-	arrayMin: value => `Please select ${value} more ${pluralize('value', Number(value))}`,
-	digitsOnly: 'يرجى استخدام الأعداد فقط',
+	arrayMin: value => `يجب اختيار ${value} خيارات على الأقل`,
+	digitsOnly: 'يجب استخدام الأعداد فقط',
 	email: 'يرجى إدخال بريد الكتروني ذو صيغة صحيحة',
-	includeDigits: value => `Please add ${value} ${pluralize('digit', Number(value))}`,
+	includeDigits: value => `يجب استخدام ${value} أرقام على الأقل`,
 	includeSpecialCharacters: value =>
 		`Please add ${value} special ${pluralize('symbol', Number(value))} or a capital ${pluralize(
 			'letter',
 			Number(value)
 		)}`,
-	maxLength: value => `Should be ${value} maximum ${pluralize('character', Number(value))} long`,
-	maxValue: value => `يرجى إدخال قيمة أصغر من ${value}`,
+	maxLength: value => `يجب أن تكون القيمة بطول ${value} محارف على الأكثر`,
+	maxValue: value => `يجب إدخال قيمة أصغر من ${value}`,
 	minLength: value => `يجب أن تكون بطول ${value} محارف على الأقل`,
-	minValue: value => `يرجى إدخال قيمة أكبر من ${value}`,
-	positiveDigitsOnly: 'يرجى استخدام الأعداد الموجبة فقط',
-	required: `يرجى تعبئة هذا الحقل`,
+	minValue: value => `يجب إدخال قيمة أكبر من ${value}`,
+	positiveDigitsOnly: 'يجب استخدام الأعداد الموجبة فقط',
+	required: `يجب تعبئة هذا الحقل`,
 	dateValid: 'هذا التاريخ غير صالح',
 	dateShouldBeBefore: value => `يجب أن يكون التاريخ قبل ${value}`,
 	dateShouldBeAfter: value => `يجب أن يكون التاريخ بعد ${value}`,

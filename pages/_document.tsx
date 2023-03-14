@@ -1,16 +1,22 @@
 /* eslint-disable react/no-danger */
-import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import fontLoader from '@utils/basic/fontLoader'
 import { BASE_PATH } from '@constants/envs'
-import { getRouter } from '@helpers/RouterNexus'
 
 const fontFile = `${BASE_PATH}/inter.css`
 const fontFamily = `Inter`
 
 export default class MyDocument extends Document {
+	static async getInitialProps(context: DocumentContext) {
+		const initialProps = await Document.getInitialProps(context)
+		return { ...initialProps }
+	}
+
 	render() {
+		const { locale } = this.props
+		const dir = locale === 'ar' ? 'rtl' : 'ltr'
 		return (
-			<Html dir={getRouter()?.locale === 'ar' ? 'rtl' : 'ltr'}>
+			<Html dir={dir}>
 				<Head>
 					<script
 						dangerouslySetInnerHTML={{
