@@ -138,6 +138,10 @@ const Drawer: FC<Partial<HTMLAttributes<HTMLDivElement>>> = props => {
 			...baseProps({ url: pages.dashboard.url, condition: 'equal' }),
 			title: labels.overview,
 		},
+		{
+			...baseProps({ url: pages.users.url }),
+			title: labels.users,
+		},
 	]
 
 	return (

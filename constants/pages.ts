@@ -22,6 +22,12 @@ const pages = {
 			url: url('/'),
 		} as Page),
 	},
+	users: {
+		...({
+			breadCrumb: () => getLabels().pages.users.breadCrumb,
+			url: url('/users'),
+		} as Page),
+	},
 }
 
 export interface PageObject extends Page {

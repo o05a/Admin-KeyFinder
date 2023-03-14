@@ -1,6 +1,7 @@
 import { Session } from 'next-auth'
 import HTTPMethods from '@api/Types/HTTPMethods'
 import { GetServerSidePropsContext } from 'next'
+import { ResponseError } from './ResponseError'
 
 export interface RequestOptions {
 	method: string
@@ -24,7 +25,7 @@ export interface RequestProps<T> {
 }
 
 export interface RequestResponse<T> {
-	data?: T
-	message?: string
-	status?: boolean
+	result?: T
+	success?: boolean
+	error?: ResponseError
 }

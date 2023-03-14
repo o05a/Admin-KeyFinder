@@ -1,12 +1,10 @@
 import BreadCrumbs from '@components/Main/BreadCrumbs/BreadCrumbs'
 import styled from '@emotion/styled'
 import { Button } from '@admixltd/admix-component-library'
-import { ReactComponent as LogoIcon } from '@svg/AppBar/logo.svg'
 import { ReactComponent as DrawerToggleIcon } from '@svg/AppBar/drawerToggle.svg'
 import { useRecoilState } from 'recoil'
 import DrawerAtom from '@atoms/Drawer'
 import { useRouter } from 'next/router'
-import pages from '@constants/pages'
 import { FC } from 'react'
 
 const AppBar: FC = ({ ...props }) => {
@@ -16,12 +14,7 @@ const AppBar: FC = ({ ...props }) => {
 	return (
 		<AppBarContainer {...props}>
 			<LogoContainer>
-				<Logo
-					icon={<LogoIcon />}
-					onClick={() => {
-						router.push(pages.dashboard.url)
-					}}
-				/>
+				<Logo />
 				<DrawerToggle
 					color="gray500"
 					icon={<DrawerToggleIcon />}

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { RecoilState, useRecoilState } from 'recoil'
-import { ReactComponent as SearchIcon } from '@svg/InventoryManagement/search.svg'
+import { ReactComponent as SearchIcon } from '@svg/Table/search.svg'
 import { ReactElement, useEffect, useRef } from 'react'
 import { setCookie } from 'cookies-next'
 import { resetRecoil } from '@admixltd/admix-component-library/RecoilNexus'
