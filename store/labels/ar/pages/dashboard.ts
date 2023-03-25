@@ -1,3 +1,3 @@
 export default {
-	breadCrumb: 'الصفحة الرئيسية',
+	breadCrumb: 'Home',
 }

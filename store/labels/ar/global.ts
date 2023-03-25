@@ -4,7 +4,7 @@ export default {
 	appleMobileWebAppTitle: `Key Finder`,
 	siteName: 'Admin',
 	confirmation: {
-		confirmation: 'موافق',
-		cancellation: 'إلغاء',
+		confirmation: 'Ok',
+		cancellation: 'Cancel',
 	},
 }
