@@ -1,16 +1,16 @@
 export default {
 	fields: {
 		email: {
-			label: 'البريد الالكتروني',
+			label: 'E-mail',
 			placeholder: 'your@email.com',
 		},
 		password: {
-			label: 'كلمة المرور',
-			placeholder: 'أدخل كلمة المرور',
+			label: 'Password',
+			placeholder: 'Please type',
 		},
 		remember: {
-			label: 'تذكرني',
+			label: 'Remember me',
 		},
 	},
-	submit: 'تسجيل الدخول',
+	submit: 'Login',
 }

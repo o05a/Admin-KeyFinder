@@ -2,24 +2,24 @@ import { Validators } from '@forms'
 import pluralize from 'pluralize'
 
 export default {
-	arrayMin: value => `يجب اختيار ${value} خيارات على الأقل`,
-	digitsOnly: 'يجب استخدام الأعداد فقط',
-	email: 'يرجى إدخال بريد الكتروني ذو صيغة صحيحة',
-	includeDigits: value => `يجب استخدام ${value} أرقام على الأقل`,
+	arrayMin: value => `Please select ${value} more ${pluralize('value', Number(value))}`,
+	digitsOnly: 'Please use digits only',
+	email: 'Please enter a valid email',
+	includeDigits: value => `Please add ${value} ${pluralize('digit', Number(value))}`,
 	includeSpecialCharacters: value =>
 		`Please add ${value} special ${pluralize('symbol', Number(value))} or a capital ${pluralize(
 			'letter',
 			Number(value)
 		)}`,
-	maxLength: value => `يجب أن تكون القيمة بطول ${value} محارف على الأكثر`,
-	maxValue: value => `يجب إدخال قيمة أصغر من ${value}`,
-	minLength: value => `يجب أن تكون بطول ${value} محارف على الأقل`,
-	minValue: value => `يجب إدخال قيمة أكبر من ${value}`,
-	positiveDigitsOnly: 'يجب استخدام الأعداد الموجبة فقط',
-	required: `يجب تعبئة هذا الحقل`,
-	dateValid: 'هذا التاريخ غير صالح',
-	dateShouldBeBefore: value => `يجب أن يكون التاريخ قبل ${value}`,
-	dateShouldBeAfter: value => `يجب أن يكون التاريخ بعد ${value}`,
+	maxLength: value => `Should be ${value} maximum ${pluralize('character', Number(value))} long`,
+	maxValue: value => `Please specify value less then ${value}`,
+	minLength: value => `Should be ${value} minimum characters long`,
+	minValue: value => `Please specify value more then ${value}`,
+	positiveDigitsOnly: 'Please use only positive numbers',
+	required: `Please fill it out`,
+	dateValid: 'This date is invalid',
+	dateShouldBeBefore: value => `This date should be before ${value}`,
+	dateShouldBeAfter: value => `This date should be after ${value}`,
 } as {
 	[key in Validators]: string | ((value?: string | number) => string)
 }
