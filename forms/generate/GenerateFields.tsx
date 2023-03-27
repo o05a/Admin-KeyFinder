@@ -32,7 +32,7 @@ const GenerateFields: (
 ) => {
 	if (!Array.isArray(sections)) sections = [sections]
 	const names = getFieldNames(sections, dataPrefix)
-	const fields = sections.map((field, index) => {
+	const fields = sections.map((field: IFieldVariant, index: number) => {
 		const {
 			name,
 			type = 'Block',

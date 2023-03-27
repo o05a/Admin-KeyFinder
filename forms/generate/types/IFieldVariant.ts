@@ -7,7 +7,6 @@ import { ISwitch } from '@forms/components/Switch/ISwitch'
 import { INumericInputField } from '@forms/components/NumericInput/INumericInputField'
 import { IPercentageInputField } from '@forms/components/PercentageInput/IPercentageInputField'
 import { IAutocompleteMultipleClientSideField } from '@forms/components/Autocomplete/Multiple/ClientSide/IAutocompleteMultipleClientSideField'
-import { IDropZone } from '@forms/components/DropZone/IDropZone'
 import { ITextAreaField } from '@forms/components/TextArea/ITextAreaField'
 import { IAutocompleteMultipleAsyncField } from '@forms/components/Autocomplete/Multiple/Async/IAutocompleteMultipleAsyncField'
 import { IAutocompleteSingleAsyncField } from '@forms/components/Autocomplete/Single/Async/IAutocompleteSingleAsyncField'
@@ -21,7 +20,6 @@ export type IFieldVariant =
 	| INumericInputField
 	| IPercentageInputField
 	| IAutocompleteMultipleClientSideField
-	| IDropZone
 	| ITextAreaField
 	| IAutocompleteMultipleAsyncField
 	| IAutocompleteSingleAsyncField
