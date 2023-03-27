@@ -55,6 +55,8 @@ const providers = [
 				password,
 			})
 
+			console.log('loginResponse', loginResponse)
+
 			if (!loginResponse) {
 				throw new Error(getLabels().errors.nextauth.NoLoginResponse)
 			}
