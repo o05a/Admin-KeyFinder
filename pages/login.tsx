@@ -61,6 +61,7 @@ const Login: NextPage = () => {
 	const handleFormSubmit = async (e: FormEvent) => {
 		e.preventDefault()
 		setLoading(true)
+		console.log('test123')
 
 		const result = await (async () => {
 			handleBlur()
@@ -77,13 +78,14 @@ const Login: NextPage = () => {
 				fieldsList,
 				dataPrefix,
 			})
+			console.log(userNameOrEmailAddress, password, remember)
 			const signInResult = await signIn('credentials', {
 				userNameOrEmailAddress,
 				password,
 				remember,
 				redirect: false,
 			})
-
+			console.log('signInResult', signInResult)
 			if (!signInResult) return
 
 			const { ok, error } = signInResult
