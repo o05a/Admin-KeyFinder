@@ -54,7 +54,8 @@ const providers = [
 				userNameOrEmailAddress,
 				password,
 			})
-
+			console.log('email', userNameOrEmailAddress)
+			console.log('password', password)
 			console.log('loginResponse', loginResponse)
 
 			if (!loginResponse) {
