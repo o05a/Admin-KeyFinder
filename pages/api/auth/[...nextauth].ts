@@ -61,7 +61,8 @@ const providers = [
 
 			if ('error' in loginResponse) {
 				const { error } = loginResponse
-				throw new Error(error?.details ?? getLabels().errors.nextauth.loginError)
+				console.log('loginError', error)
+				throw new Error(error ?? getLabels().errors.nextauth.loginError)
 			}
 
 			const { accessToken, userId, expireInSeconds } = loginResponse
