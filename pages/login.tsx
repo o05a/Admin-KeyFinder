@@ -85,7 +85,7 @@ const Login: NextPage = () => {
 				remember,
 				redirect: false,
 			})
-			console.log('signInResult', signInResult)
+			console.log('signInResult', signInResult?.error)
 			if (!signInResult) return
 
 			const { ok, error } = signInResult
