@@ -143,4 +143,5 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
 		session: {
 			strategy: 'jwt',
 		},
+		secret: process.env.NEXTAUTH_SECRET,
 	})
