@@ -81,8 +81,8 @@ const Login: NextPage = () => {
 			})
 			console.log(userNameOrEmailAddress, password, remember)
 			const loginResponse = await Auth.login({
-				userNameOrEmailAddress,
-				password,
+				userNameOrEmailAddress: String(userNameOrEmailAddress),
+				password: String(password),
 			})
 			console.log('123',loginResponse)
 			const signInResult = await signIn('credentials', {
