@@ -12,6 +12,7 @@ import formFieldsValidation from '@utils/forms/formFieldsValidation'
 import pages from '@constants/pages'
 import { Snackbar } from '@admixltd/admix-component-library/Snackbar'
 import getDataByFieldsList from '@forms/utils/getDataByFieldsList'
+import Auth from '@api/Models/Auth'
 
 const dataPrefix = 'LoginPage__'
 const Login: NextPage = () => {
@@ -79,6 +80,11 @@ const Login: NextPage = () => {
 				dataPrefix,
 			})
 			console.log(userNameOrEmailAddress, password, remember)
+			const loginResponse = await Auth.login({
+				userNameOrEmailAddress,
+				password,
+			})
+			console.log('123',loginResponse)
 			const signInResult = await signIn('credentials', {
 				userNameOrEmailAddress,
 				password,
